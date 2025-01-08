@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Json-список</string>
+    <string name="open_file">Открыть файл</string>
+    <string name="back">Назад</string>
+    <string name="drop_json_file_here">Перетащите JSON-файл сюда</string>
+    <string name="this_is_not_json_file">Это не JSON-файл</string>
+    <string name="only_one_file_is_allowed">Допускается только один файл!</string>
+    <string name="disable_MIME">Отключить MIME-фильтр</string>
+    <string name="disable_MIME_description">Если у вас возникают проблемы с открытием json файлов или файл не имеет расширения .json, отключите MIME-фильтр</string>
+    <string name="SHighlighting">Подсветка синтаксиса</string>
+    <string name="SHighlighting_description">Отключите это для больших файлов. Это не оптимизировано :)</string>
+    <string name="checking_for_update">Включить проверку обновлений</string>
+    <string name="theme">Тема</string>
+
+    <string-array name="Themes">
+        <item>Системная тема</item>
+        <item>Светлая</item>
+        <item>Тёмная</item>
+    </string-array>
+</resources>
