@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sjapps.about.AboutActivity">
+
+    <ImageButton
+        android:id="@+id/BackBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/back"
+        android:background="@drawable/ripple"
+        android:onClick="Назад"
+        android:src="@drawable/ic_back"
+        android:text="Назад" />
+
+    <TextView
+        android:id="@+id/TitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/BackBtn"
+        android:text="О приложении"
+        android:textColor="?colorOnBackground"
+        android:textSize="30sp" />
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedList"
+        android:layout_width="600dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/BackBtn"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            >
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true" />
+            <RelativeLayout
+                android:id="@+id/list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/logo"
+                >
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/aboutList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+
+                    android:layout_marginTop="10dp" />
+
+                <TextView
+                    android:id="@+id/LibrariesTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/aboutList"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="20dp"
+
+                    android:layout_marginBottom="5dp"
+                    android:text="Библиотеки с открытым кодом"
+                    android:textSize="25sp" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/LibrariesList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/LibrariesTxt"
+                    android:layout_centerHorizontal="true"
+
+                    />
+
+            </RelativeLayout>
+
+
+            <Button
+                android:id="@+id/updateBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/list"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:onClick="CheckForUpdate"
+                android:text="Проверка на обновление"
+                />
+
+            <Button
+                android:id="@+id/feedbackBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/updateBtn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginVertical="10dp"
+                android:onClick="SendFeedback"
+                android:text="Отправить отзыв"
+                android:background="@drawable/ripple"
+                android:textColor="?colorOnBackground"
+                />
+
+        </RelativeLayout>
+
+
+
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>
