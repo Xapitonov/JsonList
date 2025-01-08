@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:animateLayoutChanges="true"
+    android:id="@+id/content"
+    >
+
+    <RelativeLayout
+        android:id="@+id/titlePanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/ripple"
+            android:src="@drawable/ic_back"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/titleTxt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginVertical="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_toStartOf="@+id/splitViewBtn"
+            android:layout_toEndOf="@+id/backBtn"
+            app:autoSizeMaxTextSize="20dp"
+            app:autoSizeMinTextSize="10dp"
+            app:autoSizeStepGranularity="1dp"
+            app:autoSizeTextType="uniform"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text=""
+            android:textIsSelectable="true"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/splitViewBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_toStartOf="@+id/menuBtn"
+            android:background="@drawable/ripple"
+
+            android:src="@drawable/ic_splitscreen" />
+        <ImageButton
+            android:id="@+id/menuBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/ripple"
+
+            android:src="@drawable/ic_menu" />
+
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/menu"
+        layout="@layout/activity_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titlePanel"
+        android:layout_marginBottom="10dp"
+        android:animateLayoutChanges="true"
+        android:visibility="gone"/>
+
+    <View
+        android:id="@+id/dim_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#70000000"
+        android:visibility="invisible" />
+    <LinearLayout
+        android:id="@+id/mainLL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/titlePanel"
+        android:weightSum="2"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:id="@+id/listRL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+            <LinearLayout
+                android:id="@+id/topMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:layout_marginHorizontal="10dp"
+                android:visibility="gone"
+                android:gravity="center"
+                android:background="@drawable/ripple_list"
+                android:layout_alignParentEnd="true"
+
+                >
+
+                <ImageButton
+                    android:id="@+id/filterBtn"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/ripple_list"
+
+                    android:src="@drawable/ic_filter" />
+
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@null"
+                android:listSelector="@drawable/transparent_drawable"
+                android:foreground="@drawable/foreground"
+                android:layout_below="@+id/topMenu"
+                android:visibility="gone"
+                />
+            <TextView
+                android:id="@+id/emptyListTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Список пуст"
+                android:textSize="17dp"
+                android:visibility="gone"
+                />
+
+            <ImageView
+                android:id="@+id/fileImg"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_centerHorizontal="true"
+                android:layout_above="@id/openFileBtn"
+                android:background="@drawable/ic_open_file_foreground"
+                android:backgroundTint="?colorPrimary"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:rotation="-15"
+                />
+
+            <Button
+                android:id="@+id/openFileBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Открыть файл" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rawJsonRL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="gone"
+            >
+
+
+
+            <ScrollView
+                android:id="@+id/rawJsonView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="10dp"
+                android:scrollbars="vertical"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/split_view_bg"
+
+                android:padding="10dp"
+                android:visibility="visible"
+                >
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    >
+                    <TextView
+
+                        android:id="@+id/jsonTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textIsSelectable="true"
+                        android:textColor="?colorOnSecondaryContainer"
+                        />
+
+                </HorizontalScrollView>
+
+            </ScrollView>
+            <View
+                android:id="@+id/fullRawBtn"
+                android:layout_width="100dp"
+                android:layout_height="7dp"
+                android:background="@drawable/ripple_button"
+                android:onClick="FullRaw"
+                android:layout_centerHorizontal="true"
+
+                />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        >
+
+        <LinearLayout
+            android:id="@+id/loadingView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="150dp"
+            android:animateLayoutChanges="true"
+            android:background="@drawable/background_transparent"
+
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"
+            android:visibility="invisible"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:elevation="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/loadingTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="загрузка данных из файла"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+
+                />
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progressBar"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:layout_marginTop="5dp"
+                android:max="100"
+                app:indicatorColor="#ffffff"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/dropTarget"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTintMode="add"
+        android:layout_margin="10dp"
+        android:alpha="0"
+
+        >
+
+        <View
+            android:id="@+id/dropTargetBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background2"
+            android:alpha=".5"
+            />
+
+        <TextView
+            android:id="@+id/dropTargetText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="30dp"
+
+            android:text="@string/drop_json_file_here"
+            android:textColor="#ffffff"
+
+            android:layout_centerInParent="true"
+            android:layout_alignParentBottom="true"
+            />
+
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>
